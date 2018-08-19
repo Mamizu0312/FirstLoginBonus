@@ -1,0 +1,8 @@
+prefix: §7[§eFirstLoginBonus§7]§a
+status: true
+mysql:
+  host: localhost
+  port: 3306
+  user: username
+  pass: password
+  db: FirstLoginBonus
