@@ -4,13 +4,14 @@ import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public final class FirstLoginBonus extends JavaPlugin {
+public final class FirstLoginBonus extends JavaPlugin implements Listener {
     MySQLManager mysql;
     String prefix = getConfig().getString("prefix");
 
@@ -19,6 +20,7 @@ public final class FirstLoginBonus extends JavaPlugin {
         saveDefaultConfig();
         mysql = new MySQLManager(this, "firstloginbonus");
         getCommand("firstloginbonus").setExecutor(this);
+        getServer().getPluginManager().registerEvents(this, this);
     }
 
     @Override
@@ -57,7 +59,6 @@ public final class FirstLoginBonus extends JavaPlugin {
     }
 
     public void onPlayerFirstLogin(PlayerJoinEvent e) {
-        if(getConfig().getString("status").equalsIgnoreCase("true")) {
         Bukkit.getScheduler().runTaskAsynchronously(this, () -> {
             Player p = e.getPlayer();
             String sql = "SELECT * FROM USERDATA WHERE UUID = '" + p.getUniqueId().toString() + "7;";
@@ -79,8 +80,5 @@ public final class FirstLoginBonus extends JavaPlugin {
             Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "give "+p+" minecraft:golden_shovel");
             p.sendMessage(prefix + "初回ログインボーナスを与えました！");
         });
-    } else {
-            return;
-        }
 }
 }
