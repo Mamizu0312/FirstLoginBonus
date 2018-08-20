@@ -62,7 +62,7 @@ public final class FirstLoginBonus extends JavaPlugin implements Listener {
     public void onPlayerFirstLogin(PlayerJoinEvent e) {
         Bukkit.getScheduler().runTaskAsynchronously(this, () -> {
             Player p = e.getPlayer();
-            String sql = "SELECT * FROM userdata WHERE uuid = '" + p.getUniqueId().toString() + ";";
+            String sql = "SELECT * FROM userdata WHERE uuid = '" + p.getUniqueId().toString() + "';";
             ResultSet rs = mysql.query(sql);
             if (rs != null) {
                 try {
