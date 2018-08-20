@@ -77,7 +77,7 @@ public final class FirstLoginBonus extends JavaPlugin implements Listener {
             mysql.close();
             String sqls = "INSERT INTO userdata (mcid, uuid) VALUES('" + p.getName() + "','" + p.getUniqueId().toString() + ";";
             mysql.execute(sqls);
-            Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "give "+p+" minecraft:golden_shovel");
+            Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "give "+p.getName()+" minecraft:golden_shovel");
             p.sendMessage(prefix + "初回ログインボーナスを与えました！");
         });
 }
