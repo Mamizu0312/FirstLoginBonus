@@ -17,8 +17,8 @@ public final class FirstLoginBonus extends JavaPlugin {
     @Override
     public void onEnable() {
         saveDefaultConfig();
-        mysql = new MySQLManager(this, "FirstLoginBonus");
-        getCommand("FirstLoginBonus").setExecutor(this);
+        mysql = new MySQLManager(this, "firstloginbonus");
+        getCommand("firstloginbonus").setExecutor(this);
     }
 
     @Override
@@ -74,7 +74,7 @@ public final class FirstLoginBonus extends JavaPlugin {
                 }
             }
             mysql.close();
-            String sqls = "INSERT INTO USERDATA (MCID, UUID) VALUES('" + p.getName() + "','" + p.getUniqueId().toString() + ";";
+            String sqls = "INSERT INTO userdata (mcid, uuid) VALUES('" + p.getName() + "','" + p.getUniqueId().toString() + ";";
             mysql.execute(sqls);
             Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "give "+p+" minecraft:golden_shovel");
             p.sendMessage(prefix + "初回ログインボーナスを与えました！");
