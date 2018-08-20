@@ -45,7 +45,7 @@ public class MySQLManager {
         }
 
         execute("create table if not exists userdata(" +
-                "MCID varchar(40),"+
+                "mcid varchar(40),"+
                 "uuid varchar(40)"+
                 ");");
     }
