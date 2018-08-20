@@ -1,12 +1,14 @@
 package com.github.mamizu0312.firstloginbonus;
 
 import org.bukkit.Bukkit;
+import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.sql.ResultSet;
@@ -76,9 +78,9 @@ public final class FirstLoginBonus extends JavaPlugin implements Listener {
                 }
             }
             mysql.close();
-            String sqls = "INSERT INTO userdata (mcid, uuid) VALUES('" + p.getName() + "', '" + p.getUniqueId().toString() + "';";
+            String sqls = "INSERT INTO userdata (mcid, uuid) VALUES('" + p.getName() + "', '" + p.getUniqueId().toString() + "');";
             mysql.execute(sqls);
-            Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "give "+p.getName()+" minecraft:golden_shovel");
+            p.getInventory().addItem(new ItemStack(Material.GOLDEN_SHOVEL));
             p.sendMessage(prefix + "初回ログインボーナスを与えました！");
         });
 }

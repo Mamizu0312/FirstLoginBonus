@@ -6,3 +6,4 @@ commands:
     description: firstloginbonus
     usage: /<command> on/off
     default: op
+api-version: 1.13

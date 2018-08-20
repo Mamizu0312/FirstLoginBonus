@@ -5,4 +5,4 @@ mysql:
   port: 3306
   user: username
   pass: password
-  db: FirstLoginBonus
+  db: firstloginbonus
